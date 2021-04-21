@@ -37,10 +37,10 @@ public class VirtualPetShelterApp {
 
         select = input.nextLine();
 
-        if (select == 0) {
+        if (select.equals(0)) {
             continue;
         }
-    else if (select == 1){
+    else if (select.equals(2)){
         pets.feedAll();
 
         for(VirtualPet petAfterFeed: pets.getAllPets()){
@@ -49,7 +49,7 @@ public class VirtualPetShelterApp {
         }
             System.out.println("All are full");
         }
-    else if(select == 2){
+    else if(select.equals(2)){
         pets.restAll;
 
         for(VirtualPet petAfterPlay: pets.getAllPets()){
@@ -58,18 +58,58 @@ public class VirtualPetShelterApp {
         }
             System.out.println("Needed a break");
         }
-    else if(select ==3)
-        String getAllPet;
+    else if(select.equals(3))
+            System.out.println("You chose to play");
+        String selectPet;
     for(VirtualPet myPet: pets.getAllPets()){
         System.out.println(myPet.getName()+ myPet.getDescription());
     }
         System.out.println("Enter name of pet");
     input.nextLine();
-    getAllPet = input.nextLine();
+    selectPet = input.nextLine();
+        System.out.println("You want to play" + selectPet);
+        VirtualPet thisPet = pets.findPet(selectPet);
+
+        thisPet.updateHunger(5);
+        thisPet.updateSleepy(5);
+        thisPet.updateBored(5);
+
+        continue;
+
+
+    }
+    else if (select.equals(4) ) {
+            System.out.println("So! You want to take a pet? Great");
+    for (VirtualPet adoptPet : pets.getAllPets()){
+        System.out.println(adoptPet.getName()+ adoptPet.getDescription());
+    }
+    System.out.println("Which pet? Not all..");
+    input.nextLine();
+    String adoptPet = input.nextLine();
+
+    pets.remove(adoptPet);
+            System.out.println("Great call! Pet " + adoptPet + " yours to take.");
+        }
+    else if (select.equals(5)) {
+            System.out.println("You want to donate a pet");
+            System.out.println("Type in name of your pet");
+            input.nextLine();
+            String newPet = input.nextLine();
+            System.out.println("Describe your pet");
+            String petDescription = input.nextLine();
+            VirtualPet petF = new VirtualPet(newPet, petDescription);
+            pets.add(petF);
+            System.out.println("Taking in " + newPet);
+    }
+    else {
+            System.out.println("Wrong number");
+        }
+    for (VirtualPet myPetTick: pets.getAllPets()) {
+        pets.tick(myPetTick);
     }
 
+        }
+    while(select ==0)
 
-
-
-    }
+}
 }

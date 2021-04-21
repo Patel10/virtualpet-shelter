@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class VirtualPetShelter {
 
+
     Map<String, VirtualPet> pets = new HashMap<>();
 
     public void firstAdd(VirtualPet pet) {
@@ -52,11 +53,12 @@ public class VirtualPetShelter {
             feedPet.updateHunger(-10);
         }
     }
-    public void playAll(){
-        for(VirtualPet playPet: pets.values()) {
+    public void playAll() {
+        for (VirtualPet playPet : pets.values()) {
             playPet.updateBored(10);
         }
-    public void restAll(){
+    }
+    public void restAll() {
         for (VirtualPet sleepPet: pets.values()){
             sleepPet.updateSleepy(10);
         }
