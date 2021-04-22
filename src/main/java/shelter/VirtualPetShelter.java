@@ -9,7 +9,7 @@ public class VirtualPetShelter {
 
     Map<String, VirtualPet> pets = new HashMap<>();
 
-    public void firstAdd(VirtualPet pet) {
+    public void add(VirtualPet pet) {
         pets.put(pet.getName(),pet);
     }
     public VirtualPet findPet(String petName){

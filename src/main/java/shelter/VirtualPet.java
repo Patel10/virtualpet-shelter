@@ -4,12 +4,12 @@ public class VirtualPet {
 
     private String name;
     private int hunger;
-    private int type;
+    private String type;
     private String description;
     private int sleepy;
     private int bored;
 
-    public VirtualPet(String name, int type,  String description , int hunger, int sleepy, int bored){
+    public VirtualPet(String name, String type,  String description , int hunger, int sleepy, int bored){
 
 
         this.name = name;
@@ -19,6 +19,9 @@ public class VirtualPet {
         this.hunger = hunger;
         this.bored = bored;
 
+    }
+
+    public VirtualPet(String newPet, String petDescription) {
     }
 
     public String getName() {
