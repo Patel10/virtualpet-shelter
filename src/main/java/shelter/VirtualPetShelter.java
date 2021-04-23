@@ -25,42 +25,43 @@ public class VirtualPetShelter {
         return pets.values();
     }
     public void feed(VirtualPet pet1){
-        pet1.modifyHunger(2);
+        pet1.modifyHunger(-2);
     }
-    public void tick(VirtualPet tick){
-        if(tick.getHunger() == 0) {
-            System.out.println("Overloaded with feeding, easy off.");
+    public void tick(){
+        for (VirtualPet myPetTick : getAllPets()) {
+            myPetTick.tick();
         }
-    if (tick.getHunger()>-10) {
-        System.out.println("Unresponsive");
-    }
-    if (tick.getBored() == 10 ) {
-        System.out.println("Break Needed");
-    }
-    if (tick.getBored() == -1) {
-        System.out.println("Unresponsive");
-    }
-    if (tick.getSleepy() == 10) {
-        System.out.println("Break Needed");
-    }
-    if (tick.getSleepy() == -1) {
-        System.out.println("Unresponsive");
-    }
 
+    }
+    public void outPutPet(){
+        for(VirtualPet outPet : getAllPets()) {
+            System.out.println(outPet.getName() + " " + outPet.getHunger() + " " + outPet.getSleepy() + " " + outPet.getBored());
+        }
     }
     public void feedAll(){
         for (VirtualPet feedPet: pets.values()){
-            feedPet.updateHunger(-10);
+            feedPet.updateHunger(-5);
+            feedPet.updateHunger(-2);
+            feedPet.updateBored(1);
         }
     }
     public void playAll() {
         for (VirtualPet playPet : pets.values()) {
-            playPet.updateBored(10);
+            playPet.updateBored(5);
         }
+    }
+    public void playWithPet(String petName){
+        VirtualPet thisPet = findPet(petName);
+
+        thisPet.updateHunger(5);
+        thisPet.updateSleepy(5);
+        thisPet.updateBored(5);
     }
     public void restAll() {
         for (VirtualPet sleepPet: pets.values()){
-            sleepPet.updateSleepy(10);
+            sleepPet.updateSleepy(5);
+            sleepPet.updateSleepy(3);
+            sleepPet.updateHunger(-2);
         }
     }
 

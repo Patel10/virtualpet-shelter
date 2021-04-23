@@ -39,7 +39,7 @@ public class VirtualPet {
     public int getBored() {
         return bored;
     }
-    public int getType(){ return type;}
+    public String getType(){ return type;}
     public String getDescription(){return description;}
 
 
