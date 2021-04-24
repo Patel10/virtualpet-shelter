@@ -20,6 +20,7 @@ public class VirtualPetShelterTest {
 public void setup() {
         underTest = new VirtualPetShelter();
         petC = new VirtualPet("Clelion","wild","testing",0,0,0);
+        petD = new VirtualPet("Pella","dog","testing",0,0,0);
 
     }
 @Test
@@ -30,20 +31,49 @@ public void ableToAddPet(){
 }
 @Test
 public void ableToFindPet(){
-    //underTest.add(petC);
-    underTest.findPet(petC); //error review
+    underTest.findPet(petC.getName()); // returning null
     VirtualPet findPet = underTest.findPet("Clelion");
-    assertEquals(findPet, petC);
+    assertEquals(findPet, petC.getName());
 }
 @Test
 public void ableToAddPetTwoPets(){
     underTest.add(petC);
     underTest.add(petD);
     Collection <VirtualPet> allPets = underTest.getAllPets();
-    assertEquals(1,allPets.size());
+    assertEquals(2,allPets.size());
 }
+@Test
+public void ableToAdoptPet(){
+    underTest.add(petC);
+    underTest.remove(petC.getName());
+    VirtualPet retrievedPet = underTest.findPet(petC.getName());
+    assertEquals(retrievedPet, retrievedPet);
+}
+//@Test
+//public void shouldFeedPet(){
+    //underTest.feedAll(petC.getHunger());
+    //VirtualPet feedAll = underTest.findPet(petC.getName()).getHunger();  doesn't run correctly
+    //assertEquals(petC.getHunger());
+
+//}
+@Test
+public void shouldFeedPet(){
+    underTest.feed(petC);
+    assertEquals(petC.getHunger(),(-2));
+}
+@Test
+public void shouldFeedAllPet(){
+    underTest.feedAll();
+    assertEquals(petC.getHunger(),(-2));
+    assertEquals(petD.getHunger(),(-2));
+}
+@Test
+public void restAllPet(){
+    underTest.restAll();
+    assertEquals(petC.getSleepy(),(0));
 
 
+}
 
 
 }
